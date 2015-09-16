@@ -1,0 +1,8 @@
+gdb disas main
+
+0804808f <+15>:	cmp    $0x10f,%eax
+
+
+0x10f = 271 
+
+win
